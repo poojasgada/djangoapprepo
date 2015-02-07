@@ -1,0 +1,6 @@
+<h1>{{ movie.movie_name }}</h1>
+<ul>
+{% for likeit in movie.likeit_set.all %}
+    <li>{{ likeit.likeit_text}}</li>
+{% endfor %}
+</ul>
