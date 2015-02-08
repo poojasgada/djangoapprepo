@@ -1,6 +1,7 @@
 <html> 
+
 {% load bootstrap3 %}
-<head> 
+<head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- Optional theme -->
@@ -10,21 +11,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="well" >
-	<table class="table">
-		<thead> <tr> <th> Movie Name </th> </tr></thead>
-		<tbody> 
-{% if latest_movie_list %}
-    
-    {% for movie in latest_movie_list %}
-       <tr> <th>  <a href="{% url 'movie:detail' movie.id %}">{{ movie.movie_name }}</a> </th></tr>
-    {% endfor %}
-    
-{% else %}
-    <p>No movies are available.</p>
-{% endif %}
-	</tbody>
-	</table>
+<div class="well">
+<h1>{{ movie.movie_name }}</h1>
+
+<ul>
+
+{% for likeit in movie.likeit_set.all %}
+    <li>{{ likeit.likeit_text }} -- {{ likeit.upvote }} Upvote{{ likeit.upvote|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a class= "btn btn-link" href="{% url 'movie:detail' movie.id %}">Wanna Upvote again ?</a>
 </div>
 </body>
 </html>

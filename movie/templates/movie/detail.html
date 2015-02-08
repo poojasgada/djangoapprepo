@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<div class="well">
 <h1>{{ movie.movie_name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -25,5 +26,6 @@
 {% endfor %}
 <input type="submit" value="Upvote !" class="btn btn-primary"/>
 </form>
+</div>
 </body>
 </html>
