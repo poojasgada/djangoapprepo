@@ -1,9 +1,28 @@
+<html> 
+{% load bootstrap3 %}
+<head> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<table class="table">
+		<thead> <tr> <th> Movie Name </th> </tr></thead>
+		<tbody> 
 {% if latest_movie_list %}
-    <ul>
+    
     {% for movie in latest_movie_list %}
-        <li><a href="{% url 'movie:detail' movie.id %}">{{ movie.movie_name }}</a></li>
+       <tr> <th>  <a href="{% url 'movie:detail' movie.id %}">{{ movie.movie_name }}</a> </th></tr>
     {% endfor %}
-    </ul>
+    
 {% else %}
     <p>No movies are available.</p>
 {% endif %}
+	</tbody>
+	</table>
+</body>
+</html>

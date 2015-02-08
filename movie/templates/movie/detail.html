@@ -1,6 +1,29 @@
+
+<html> 
+{% load bootstrap3 %}
+{% load bootstrap_toolkit %}
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
 <h1>{{ movie.movie_name }}</h1>
-<ul>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'movie:movie' movie.id %}" method="post" class="form">
+{% csrf_token %}
 {% for likeit in movie.likeit_set.all %}
-    <li>{{ likeit.likeit_text}}</li>
+    <input type="radio" name="likeit" id="likeit{{ forloop.counter }}" value="{{ likeit.id }}" />
+    <label for="likeit{{ forloop.counter }}">{{ likeit.likeit_text }}</label><br />
 {% endfor %}
-</ul>
+<input type="submit" value="Upvote !" class="btn btn-primary"/>
+</form>
+</body>
+</html>
