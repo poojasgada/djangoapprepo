@@ -40,7 +40,7 @@ class MovieTests(TestCase):
 		likeit_obj.save()
 
 		likeit_obj_postsave = LikeIt.objects.filter(movie=movie_obj)[0]
-		self.assertEqual(10, likeit_obj_postsave.upvote)
+		self.assertEqual(1, likeit_obj_postsave.upvote)
 
 		#Always nice to clean up after tests
 		Movie.objects.all().delete()
